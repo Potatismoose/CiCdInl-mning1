@@ -4,5 +4,6 @@ namespace CiCdInlämning1.Models.Users
 {
     class User : Account, ISaveable
     {
+
     }
 }
