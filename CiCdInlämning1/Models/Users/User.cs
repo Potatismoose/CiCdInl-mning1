@@ -2,7 +2,7 @@
 
 namespace CiCdInlämning1.Models.Users
 {
-    class User : Account, ISaveable
+    public class User : Account, ISaveable
     {
 
     }
