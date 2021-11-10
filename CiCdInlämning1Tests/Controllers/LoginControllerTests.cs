@@ -26,6 +26,7 @@ namespace CiCdInlämning1.Controllers.Tests
             var result = LoginController.Login(userName, password);
             //Assert
             Assert.That(result, Is.InstanceOf<Account>());
+            
         }
     }
 }

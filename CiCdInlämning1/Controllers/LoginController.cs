@@ -15,7 +15,7 @@ namespace CiCdInlämning1.Controllers
             else
             {
                 var listOfUsers = ReadWrite.GetListOfUsers();
-                return listOfUsers.FirstOrDefault(x => x.Name == username.Trim() && x.Password == password.Trim());
+                return listOfUsers?.FirstOrDefault(x => x.Name == username.Trim() && x.Password == password.Trim());
             }
         }
     }
