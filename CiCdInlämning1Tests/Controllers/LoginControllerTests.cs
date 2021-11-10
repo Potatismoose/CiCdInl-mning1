@@ -1,4 +1,5 @@
 ﻿using CiCdInlämning1.Models.Users;
+using CiCdInlämning1.Utilities;
 using NUnit.Framework;
 
 namespace CiCdInlämning1.Controllers.Tests
@@ -18,15 +19,15 @@ namespace CiCdInlämning1.Controllers.Tests
             Assert.That(result, Is.Null);
         }
 
-        [TestCase("testgubbe1", "password1", TestName = "Login_ValidUsername_ReturnUser")]
-        [TestCase("admin1", "admin1234", TestName = "Login_ValidUsername_ReturnAdmin")]
-        public void LoginTestSuccessful(string userName, string password)
-        {
-            //Act
-            var result = LoginController.Login(userName, password);
-            //Assert
-            Assert.That(result, Is.InstanceOf<Account>());
+        //[TestCase("testgubbe1", "password1", TestName = "Login_ValidUsername_ReturnUser")]
+        //[TestCase("admin1", "admin1234", TestName = "Login_ValidUsername_ReturnAdmin")]
+        //public void LoginTestSuccessful(string userName, string password)
+        //{
+        //    //Act
+        //    var result = LoginController.Login(userName, password);
+        //    //Assert
+        //    Assert.That(result, Is.InstanceOf<Account>());
             
-        }
+        //}
     }
 }
