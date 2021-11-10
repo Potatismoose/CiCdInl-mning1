@@ -7,6 +7,7 @@ namespace CiCdInlämning1.Menues
 {
     class MainMenu
     {
+        readonly private string wrongChoice = "Error, wrong menu choice.";
         private List<string> MenuOptions = new() { "Lön", "Anställning", "Ta bort användare", "Logga ut", "Avsluta programmet" };
         ISaveable User;
 
@@ -18,6 +19,7 @@ namespace CiCdInlämning1.Menues
         public void Start()
         {
             bool exit = false;
+            string errorMsg = default;
             do
             {
                 Console.Clear();
@@ -29,6 +31,11 @@ namespace CiCdInlämning1.Menues
                 else
                 {
                     Console.WriteLine("\n");
+                }
+                if (!string.IsNullOrEmpty(errorMsg))
+                {
+                    PrintFormating.PrintTextInRed(errorMsg);
+                    errorMsg = default;
                 }
                 for (int i = 0; i < MenuOptions.Count; i++)
                 {
@@ -46,15 +53,34 @@ namespace CiCdInlämning1.Menues
 
                 if (User.IsAdmin)
                 {
+                    AdminMenu am = new(User);
+                    am.Start();
 
                 }
 
                 Console.Write("Gör ditt val > ");
-                var choiceIsNumber = int.TryParse(Console.ReadLine(), out int menuChoice);
+                var userChoice = Console.ReadLine();
+                var choiceIsNumber = int.TryParse(userChoice, out int menuChoice);
                 if (choiceIsNumber)
                 {
                     switch (menuChoice)
                     {
+                        case 1:
+                            //TODO: Implement Salary info
+                            break;
+                        case 2:
+                            //TODO: Implement Employment info
+                            break;
+                        case 3:
+                            if (User.IsAdmin)
+                            {
+                                errorMsg = wrongChoice;
+                            }
+                            else
+                            { 
+                            //TODO: Implement remove user
+                            }
+                            break;
                         case 4:
                             exit = true;
                             break;
@@ -62,10 +88,34 @@ namespace CiCdInlämning1.Menues
                             Environment.Exit(1);
                             break;
                         default:
+                            errorMsg = wrongChoice;
                             break;
                     }
                 }
-
+                else {
+                    if (User.IsAdmin)
+                    {
+                        switch (userChoice.ToLower())
+                        {
+                            case "a":
+                                //TODO: Implement see all users
+                                break;
+                            case "b":
+                                //TODO: Implement create user
+                                break;
+                            case "c":
+                                //TODO: Implement remove other user
+                                break;
+                            default:
+                                errorMsg = wrongChoice;
+                                break;
+                        }
+                    }
+                    else {
+                        errorMsg = wrongChoice;
+                    }
+                }
+                
             } while (!exit);
 
         }

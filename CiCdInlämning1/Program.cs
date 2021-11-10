@@ -13,11 +13,8 @@ namespace CiCdInlämning1
             ReadWrite.Deserialize();
             
             ReadWrite.Serialize(new User(1, "Johan", "testar123", "bad@bad.com"));
-            foreach (var item in ReadWrite.GetListOfUsers())
-            {
-                Console.WriteLine(item);
-            }
-            Console.ReadKey();
+
+            
 
             // Det första som skall ske är en deserialize för att kolla om filerna finns.
             // Sen kör vi get list of users, om dess count är 0. Skapa en ny admin som skickas in 
