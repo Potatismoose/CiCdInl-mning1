@@ -7,5 +7,6 @@
         public string Password { get; set; }
         public string Email { get; set; }
         public bool IsAdmin { get; set; }
+        public int Salary { get; set; }
     }
 }

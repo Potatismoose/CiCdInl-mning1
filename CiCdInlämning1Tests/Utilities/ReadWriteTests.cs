@@ -17,7 +17,7 @@ namespace CiCdInlämning1.Utilities.Tests
         public void GetListOfUsers_Is_not_Null()
         {
             // Act
-            ReadWrite.Serialize(new User(1, "Johan", "testar123", "bad@bad.com"));
+            ReadWrite.Serialize(new User(1, "Johan", "testar123", "bad@bad.com", 55000));
             ReadWrite.Deserialize();
             // Arrange
             var actual = ReadWrite.GetListOfUsers();

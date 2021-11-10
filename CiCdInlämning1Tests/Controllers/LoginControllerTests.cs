@@ -18,8 +18,8 @@ namespace CiCdInlämning1.Controllers.Tests
             Assert.That(result, Is.Null);
         }
 
-        [TestCase("Bertil Karlsson", "Gurka531", TestName = "Login_ValidUsername_ReturnUser")]
-        [TestCase("Anders Donick", "Banan554", TestName = "Login_ValidUsername_ReturnAdmin")]
+        [TestCase("testgubbe1", "password1", TestName = "Login_ValidUsername_ReturnUser")]
+        [TestCase("admin1", "admin1234", TestName = "Login_ValidUsername_ReturnAdmin")]
         public void LoginTestSuccessful(string userName, string password)
         {
             //Act

@@ -10,20 +10,7 @@ namespace CiCdInlämning1.Utilities
     public static class ReadWrite
     {
         readonly static string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        static List<ISaveable> listOfUsers = new()
-        {
-            new User(
-                12,
-                "Bertil Karlsson",
-                "Gurka531",
-                "B.Karlsson@company.com"),
-            new Admin(
-                1,
-                "Anders Donick",
-                "Banan554",
-                "a.donick@company.com")
-        }
-           ;
+        static List<ISaveable> listOfUsers = new();
         public static void Serialize(ISaveable user)
         {
             string fullFilePath = filePath + "\\" + user.Id + ".user";

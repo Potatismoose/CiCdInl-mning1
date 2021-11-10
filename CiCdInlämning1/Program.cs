@@ -11,18 +11,15 @@ namespace CiCdInlämning1
         static void Main(string[] args)
         {
             ReadWrite.Deserialize();
-            
-            ReadWrite.Serialize(new User(1, "Johan", "testar123", "bad@bad.com"));
 
-            
-
-            // Det första som skall ske är en deserialize för att kolla om filerna finns.
-            // Sen kör vi get list of users, om dess count är 0. Skapa en ny admin som skickas in 
-            // i serialize samt två st dummy users.  
-            // Sen kör vi deserialize igen för att spara in admin i listan.
-            // lägg detta i en do while loop som kontrollerar om getList of users är större än 0
-            // är den det så avsluta loopen och gå till inloggnings GUI.
-            // 
+            if (ReadWrite.GetListOfUsers().Count == 0)
+            {
+                ReadWrite.Serialize(new Admin(1, "admin1", "admin1234", "admin@admin.com", 55000));
+                ReadWrite.Serialize(new User(2, "testgubbe1", "password1", "testgubbe1@notadmin.com", 29500));
+                ReadWrite.Serialize(new User(3, "testgubbe2", "password2", "testgubbe2@notadmin.com", 19700));
+                ReadWrite.Serialize(new User(4, "testgubbe3", "password3", "testgubbe3@notadmin.com", 25000));
+                ReadWrite.Deserialize();
+            }
 
             Login.Start();
         }
