@@ -2,6 +2,7 @@
 
 namespace CiCdInlämning1.Models.Users
 {
+    [Serializable]
     public abstract class Account
     {
         //Main parent.
