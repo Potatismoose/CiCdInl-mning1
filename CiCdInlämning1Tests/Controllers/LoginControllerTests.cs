@@ -1,10 +1,5 @@
-﻿using NUnit.Framework;
-using CiCdInlämning1.Controllers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CiCdInlämning1.Models.Users;
+using NUnit.Framework;
 
 namespace CiCdInlämning1.Controllers.Tests
 {
@@ -15,12 +10,22 @@ namespace CiCdInlämning1.Controllers.Tests
         [TestCase(null, "HejGummiBralla", TestName = "Login_NullUsername_ReturnNull")]
         [TestCase("S/M Bosse", null, TestName = "Login_NullPassword_ReturnNull")]
         [TestCase(null, null, TestName = "Login_NullPasswordAndNullUsername_ReturnNull")]
-        public void LoginTest(string userName, string password)
+        public void LoginTestFail(string userName, string password)
         {
             //Act
             var result = LoginController.Login(userName, password);
             //Assert
             Assert.That(result, Is.Null);
+        }
+
+        [TestCase("Bertil Karlsson", "Gurka531", TestName = "Login_ValidUsername_ReturnUser")]
+        [TestCase("Anders Donick", "Banan554", TestName = "Login_ValidUsername_ReturnAdmin")]
+        public void LoginTestSuccessful(string userName, string password)
+        {
+            //Act
+            var result = LoginController.Login(userName, password);
+            //Assert
+            Assert.That(result, Is.InstanceOf<Account>());
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using CiCdInlämning1.Interfaces;
-using CiCdInlämning1.Models.Users;
-using System.Collections.Generic;
+using CiCdInlämning1.Utilities;
+using System.Linq;
 
 namespace CiCdInlämning1.Controllers
 {
@@ -14,8 +14,8 @@ namespace CiCdInlämning1.Controllers
             }
             else
             {
-                List<ISaveable> listOfUsers = new() { new User(), new User() }; //TODO: ska använda sig av readwrite getlistofusers.
-                return null; //TODO: Returnerar inte korrekt
+                var listOfUsers = ReadWrite.GetListOfUsers();
+                return listOfUsers.FirstOrDefault(x => x.Name == username.Trim() && x.Password == password.Trim());
             }
         }
     }
