@@ -16,7 +16,7 @@ namespace CiCdInlämning1.Models.Users
             Email = email;
             IsAdmin = isAdmin;
             Salary = salary;
-            Role = Role;
+            Role = role;
         }
 
         public int Id { get; set; }
