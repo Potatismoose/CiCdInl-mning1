@@ -1,5 +1,5 @@
 ﻿using CiCdInlämning1.Interfaces;
-using CiCdInlämning1.Models.Users;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -24,6 +24,7 @@ namespace CiCdInlämning1.Utilities
 
         public static void Deserialize()
         {
+            listOfUsers.Clear();
             foreach (var file in Directory.GetFiles(filePath))
             {
                 if (Path.GetExtension(file) == ".user")
@@ -37,9 +38,44 @@ namespace CiCdInlämning1.Utilities
             }
         }
 
+        async public static void WriteLastEmployeeIdToFile(string employeeId)
+        {
+            var employeeFile = filePath + "\\" + "employeeId.info";
+            await File.WriteAllTextAsync(employeeFile, employeeId);
+        }
+
+        public static int ReadLastEmployeeIdFromFile()
+        {
+            var employeeFile = filePath + "\\" + "employeeId.info";
+            return Convert.ToInt32(File.ReadAllText(employeeFile));
+        }
+
         public static List<ISaveable> GetListOfUsers()
         {
             return listOfUsers;
+        }
+
+        public static void AddUserToList(ISaveable user)
+        {
+            if (user is not null)
+            {
+                listOfUsers.Add(user);
+            }
+        }
+
+        public static void RemoveUserFromList(ISaveable user)
+        {
+            if (user is not null && listOfUsers.Contains(user))
+            {
+                listOfUsers.Remove(user);
+            }
+        }
+
+        public static void ReadFromFilesAndAddToListOfUsersAndUpdateEmployeeId()
+        {
+            ReadWrite.Deserialize();
+            var lastUser = ReadWrite.GetListOfUsers()[^1];
+            ReadWrite.WriteLastEmployeeIdToFile(lastUser.Id.ToString());
         }
     }
 }

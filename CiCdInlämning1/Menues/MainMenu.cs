@@ -1,4 +1,5 @@
-﻿using CiCdInlämning1.Interfaces;
+﻿using CiCdInlämning1.Controllers;
+using CiCdInlämning1.Interfaces;
 using CiCdInlämning1.Utilities;
 using System;
 using System.Collections.Generic;
@@ -101,7 +102,12 @@ namespace CiCdInlämning1.Menues
                                 //TODO: Implement see all users
                                 break;
                             case "b":
-                                //TODO: Implement create user
+                                UserController uc = new();
+                                
+                                        uc.CreateNewUser();
+
+                                
+
                                 break;
                             case "c":
                                 //TODO: Implement remove other user
