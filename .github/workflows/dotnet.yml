@@ -50,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test /CiCdInlämning1Tests --no-build --verbosity normal
   fulltest:
     needs: build-staging
     if: github.event_name == 'pull_request'
