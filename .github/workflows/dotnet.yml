@@ -65,7 +65,7 @@ jobs:
   release:
     name: Releasing
     needs: fulltest
-    if: github.event.name == "pull_request"
+    if: github.event.name == 'pull_request'
     runs-on: ${{ matrix.os }}
     strategy: 
       matrix: 
