@@ -103,10 +103,20 @@ namespace CiCdInlämning1.Menues
                                 break;
                             case "b":
                                 UserController uc = new();
+                                var createdUser = uc.CreateNewUser();
+                                if (createdUser is not null)
+                                {
+                                    Console.WriteLine($"Skapade användaren: {createdUser.Name}");
+                                    Console.WriteLine($"Skapade lösenordet: {createdUser.Password}");
+                                    Console.WriteLine($"Skapade email: {createdUser.Email}");
+                                    Console.WriteLine($"Skapade lön: {createdUser.Salary}");
+                                    Console.WriteLine($"Skapade Id: {createdUser.Id}");
+                                }
+                                else {
+                                    PrintFormating.PrintTextInRed("Användaren kunde inte skapas");
+                                }
                                 
-                                        uc.CreateNewUser();
-
-                                
+                                Console.ReadKey();
 
                                 break;
                             case "c":

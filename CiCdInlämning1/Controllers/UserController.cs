@@ -21,45 +21,23 @@ namespace CiCdInlämning1.Controllers
             string role = default;
             string email = default;
             int salary = 0;
+
             int id = ReadWrite.ReadLastEmployeeIdFromFile() + 1;
-            do
-            {
-                Console.Write("Username: ");
-                username = Console.ReadLine();
-            } while (string.IsNullOrEmpty(username) || string.IsNullOrWhiteSpace(username));
-
-            do
-            {
-                Console.Write("Password: ");
-                var userInputPassword = Console.ReadLine();
-                var result = ValidatePassword(userInputPassword);
-                GiveUserFeedbackOnInput(ref password, result, userInputPassword);
-            } while (true);
-            do
-            {
-                Console.Write("Email: ");
-                var userInput = Console.ReadLine();
-                var result = ValidateEmail(userInput);
-                if (result.result is false)
-                {
-                    PrintFormating.PrintTextInRed(result.errorMsg);
-                }
-                else
-                {
-                    email = userInput;
-                    PrintFormating.PrintTextInGreen("Successfully stored");
-                    break;
-                }
-            } while (true);
-            do
-            {
-                Console.Write("Role: ");
-                var userInput = Console.ReadLine();
-                role = userInput;
-
-            } while (string.IsNullOrEmpty(role));
-
+            username = InputUsername();
+            InputPassword(ref password);
+            InputEmail(ref email);
+            InputRole(ref role);
             errorMsg = default;
+            InputSalary(ref errorMsg, ref salary);
+            User createdUser = new(id, username, password, email, salary);
+            ReadWrite.Serialize(createdUser);
+            ReadWrite.ReadFromFilesAndAddToListOfUsersAndUpdateEmployeeId();
+
+            return createdUser;
+        }
+
+        private void InputSalary(ref string errorMsg, ref int salary)
+        {
             do
             {
 
@@ -81,10 +59,57 @@ namespace CiCdInlämning1.Controllers
                 }
 
             } while (salary <= 0);
-            User createdUser = new(id, username, password, email, salary);
-            ReadWrite.Serialize(createdUser);
-            ReadWrite.ReadFromFilesAndAddToListOfUsersAndUpdateEmployeeId();
-            return createdUser;
+        }
+        private void InputRole(ref string role)
+        {
+            do
+            {
+                Console.Write("Role: ");
+                var userInput = Console.ReadLine();
+                role = userInput;
+
+            } while (string.IsNullOrEmpty(role));
+        }
+        private void InputEmail(ref string email)
+        {
+            do
+            {
+                Console.Write("Email: ");
+                var userInput = Console.ReadLine();
+                var result = ValidateEmail(userInput);
+                if (result.result is false)
+                {
+                    PrintFormating.PrintTextInRed(result.errorMsg);
+                }
+                else
+                {
+                    email = userInput;
+                    PrintFormating.PrintTextInGreen("Successfully stored");
+                    break;
+                }
+            } while (true);
+        }
+        private void InputPassword(ref string password)
+        {
+            bool correctPassword = false;
+            do
+            {
+                Console.Write("Password: ");
+                var userInputPassword = Console.ReadLine();
+                var result = ValidatePassword(userInputPassword);
+                correctPassword = result.result;
+                GiveUserFeedbackOnInput(ref password, result, userInputPassword);
+            } while (!correctPassword);
+        }
+        private string InputUsername()
+        {
+            string username = default;
+            do
+            {
+                Console.Write("Username: ");
+                username = Console.ReadLine();
+            } while (string.IsNullOrEmpty(username) || string.IsNullOrWhiteSpace(username));
+            return username;
         }
 
         private void GiveUserFeedbackOnInput(ref string password, (string errorMsg, bool result) result, string userInputPassword)
