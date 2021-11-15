@@ -111,7 +111,6 @@ namespace CiCdInlämning1.Controllers
             } while (string.IsNullOrEmpty(username) || string.IsNullOrWhiteSpace(username));
             return username;
         }
-
         private void GiveUserFeedbackOnInput(ref string password, (string errorMsg, bool result) result, string userInputPassword)
         {
             if (result.result is false)
@@ -124,7 +123,6 @@ namespace CiCdInlämning1.Controllers
                 PrintFormating.PrintTextInGreen("Successfully stored");
             }
         }
-
         private (string errorMsg, bool result) ValidatePassword(string input)
         {
             var ErrorMessage = string.Empty;
