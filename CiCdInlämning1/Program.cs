@@ -1,8 +1,6 @@
-﻿using CiCdInlämning1.Models.Users;
+﻿using CiCdInlämning1.Menues;
+using CiCdInlämning1.Models.Users;
 using CiCdInlämning1.Utilities;
-using System;
-
-using CiCdInlämning1.Menues;
 
 namespace CiCdInlämning1
 {

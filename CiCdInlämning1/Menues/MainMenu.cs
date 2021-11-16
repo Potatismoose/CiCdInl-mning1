@@ -1,4 +1,5 @@
-﻿using CiCdInlämning1.Interfaces;
+﻿using CiCdInlämning1.Controllers;
+using CiCdInlämning1.Interfaces;
 using CiCdInlämning1.Utilities;
 using System;
 using System.Collections.Generic;
@@ -101,7 +102,22 @@ namespace CiCdInlämning1.Menues
                                 //TODO: Implement see all users
                                 break;
                             case "b":
-                                //TODO: Implement create user
+                                UserController uc = new();
+                                var createdUser = uc.CreateNewUser();
+                                if (createdUser is not null)
+                                {
+                                    Console.WriteLine($"Skapade användaren: {createdUser.Name}");
+                                    Console.WriteLine($"Skapade lösenordet: {createdUser.Password}");
+                                    Console.WriteLine($"Skapade email: {createdUser.Email}");
+                                    Console.WriteLine($"Skapade lön: {createdUser.Salary}");
+                                    Console.WriteLine($"Skapade Id: {createdUser.Id}");
+                                }
+                                else {
+                                    PrintFormating.PrintTextInRed("Användaren kunde inte skapas");
+                                }
+                                
+                                Console.ReadKey();
+
                                 break;
                             case "c":
                                 //TODO: Implement remove other user
