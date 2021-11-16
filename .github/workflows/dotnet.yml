@@ -25,7 +25,7 @@ jobs:
       run: dotnet build --no-restore  
       
   staging:
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request' 
     runs-on: ${{ matrix.os }}
     strategy: 
      matrix: 
@@ -60,6 +60,7 @@ jobs:
       run: dotnet build --no-restore  
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      
   fulltest:
     needs: staging
     if: github.event_name == 'pull_request'
@@ -82,8 +83,8 @@ jobs:
   
   release:
     name: Releasing
-    needs: [fulltest, staging]
-    #if: github.event.name == 'pull_request'
+    #needs: [fulltest, staging]
+    if: github.event.name == 'pull_request'
     runs-on: ${{ matrix.os }}
     strategy: 
       matrix: 
