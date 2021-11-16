@@ -20,9 +20,10 @@ namespace CiCdInlämning1.Utilities.Tests
             ReadWrite.Deserialize();
 
             // Arrange
+            var actual = ReadWrite.GetListOfUsers();
 
             // Assert
-            Assert.Fail();
+            Assert.That(actual, Is.Not.Null);
         }
     }
 }
