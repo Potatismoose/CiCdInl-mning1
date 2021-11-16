@@ -15,7 +15,9 @@ namespace CiCdInlämning1.Utilities.Tests
         public void DeserializeTest()
         {
             // Act
-            
+            ReadWrite.Serialize(new User(1, "Johan", "testar123", "bad@bad.com", 55000, "Astronaut"));
+            ReadWrite.Deserialize();
+
             // Arrange
 
             // Assert

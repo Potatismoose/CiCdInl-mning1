@@ -8,5 +8,6 @@
         public string Email { get; set; }
         public bool IsAdmin { get; set; }
         public int Salary { get; set; }
+        public string Role { get; set; }
     }
 }
