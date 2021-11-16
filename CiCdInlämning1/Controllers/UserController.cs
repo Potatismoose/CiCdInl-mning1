@@ -29,7 +29,7 @@ namespace CiCdInlämning1.Controllers
             InputRole(ref role);
             errorMsg = default;
             InputSalary(ref errorMsg, ref salary);
-            User createdUser = new(id, username, password, email, salary);
+            User createdUser = new(id, username, password, email, salary, role);
             ReadWrite.Serialize(createdUser);
             ReadWrite.ReadFromFilesAndAddToListOfUsersAndUpdateEmployeeId();
 
