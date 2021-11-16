@@ -9,7 +9,6 @@ namespace CiCdInlämning1
         static void Main(string[] args)
         {
             ReadWrite.Deserialize();
-
             if (ReadWrite.GetListOfUsers().Count == 0)
             {
                 ReadWrite.Serialize(new Admin(1, "admin1", "admin1234", "admin@admin.com", 55000, "VD"));
