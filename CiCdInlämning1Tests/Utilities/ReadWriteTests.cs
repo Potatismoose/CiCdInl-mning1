@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CiCdInlämning1.Models.Users;
 
 namespace CiCdInlämning1.Utilities.Tests
 {
@@ -19,9 +20,10 @@ namespace CiCdInlämning1.Utilities.Tests
             ReadWrite.Deserialize();
 
             // Arrange
+            var actual = ReadWrite.GetListOfUsers();
 
             // Assert
-            Assert.Fail();
+            Assert.That(actual, Is.Not.Null);
         }
     }
 }
