@@ -23,7 +23,7 @@ namespace CiCdInlämning1.Controllers.Tests
         [TestCase("admin1", "admin1234", TestName = "Login_ValidUsername_ReturnAdmin")]
         public void LoginTestSuccessful(string userName, string password)
         {
-            Admin user = new Admin(1513212, userName, password, "administrator@admin.com", 13000);
+            Admin user = new Admin(1513212, userName, password, "administrator@admin.com", 13000, "Admin");
             ReadWrite.AddUserToList(user);
 
             //Act
