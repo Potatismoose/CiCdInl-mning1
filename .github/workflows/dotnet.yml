@@ -55,7 +55,7 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Test
-      run: dotnet test ~/CiCdInlämning1Tests/CiCdInlämning1Tests.csproj --no-build --verbosity normal
+      run: dotnet test '~/CiCdInlämning1Tests/CiCdInlämning1Tests.csproj' --no-build --verbosity normal
   fulltest:
     needs: staging
     if: github.event_name == 'pull_request'
