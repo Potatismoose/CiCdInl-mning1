@@ -25,6 +25,7 @@ namespace CiCdInlämning1.Controllers.Tests
         {
             Admin user = new Admin(1513212, userName, password, "administrator@admin.com", 13000);
             ReadWrite.AddUserToList(user);
+
             //Act
             var result = LoginController.Login(userName, password);
             ReadWrite.RemoveUserFromList(user);
