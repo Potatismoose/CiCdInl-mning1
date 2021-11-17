@@ -8,7 +8,6 @@ namespace CiCdInlämning1
     {
         static void Main(string[] args)
         {
-
             ReadWrite.Deserialize();
             if (ReadWrite.GetListOfUsers().Count == 0)
             {
