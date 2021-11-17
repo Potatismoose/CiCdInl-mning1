@@ -72,7 +72,7 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Full test
-      run: dotnet test "/CiCdInlämning1Tests/CiCdInlämning1Tests.csproj" --verbosity normal
+      run: dotnet test "/CiCdInlämning1Tests.csproj" --verbosity normal
   
   release:
     name: Releasing
