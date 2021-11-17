@@ -45,7 +45,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
       
-  test:
+  unittests:
     needs: development
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
@@ -55,7 +55,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x 
-    - name: Test
+    - name: Unit tests
       run: dotnet test "./CiCdInlämning1Tests/CiCdInlämning1Tests.csproj" --verbosity normal
       
   fulltest:
@@ -71,8 +71,10 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-    - name: Full test
+    - name: Unit test
       run: dotnet test "./CiCdInlämning1Tests/CiCdInlämning1Tests.csproj" --verbosity normal
+    - name: Integration test
+      run: dotnet test "./CiCdInlämning1Tests/IntegrationTests/IntegrationTests.csproj" --verbosity normal
   
   release:
     if: github.event_name == 'pull_request'
