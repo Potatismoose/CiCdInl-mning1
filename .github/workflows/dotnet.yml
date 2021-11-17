@@ -25,7 +25,7 @@ jobs:
       run: dotnet build --no-restore  
       
   staging:
-    if: ${{ github.event_name == 'pull_request' && !github.ref == 'refs/head/master' }}
+    if: github.event_name == 'pull_request'
     runs-on: ${{ matrix.os }}
     strategy: 
      matrix: 
@@ -85,7 +85,7 @@ jobs:
   release:
     name: Releasing
     #needs: [fulltest, staging]
-    if: github.event.name == 'pull_request' && github.ref == 'refs/head/develop' 
+    if: ${{ github.event_name == 'pull_request' && github.ref == 'refs/heads/develop' }} 
     runs-on: ${{ matrix.os }}
     strategy: 
       matrix: 
