@@ -84,15 +84,13 @@ jobs:
   
   release:
     name: Releasing
-    #needs: [fulltest, staging]
-    if: ${{ github.event_name == 'pull_request' }} 
     runs-on: ${{ matrix.os }}
     strategy: 
       matrix: 
         os: [ubuntu-latest, macos-latest, windows-latest]
-    #environment:
-      #name: production
-      #url: https://github.com/Potatismoose/CiCdInl-mning1/tree/master
+    environment:
+      name: production
+      url: https://github.com/Potatismoose/CiCdInl-mning1/tree/master
     steps: 
       - name: Checkout code
         uses: actions/checkout@v2
