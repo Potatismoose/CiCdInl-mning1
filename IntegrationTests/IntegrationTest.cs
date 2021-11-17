@@ -5,8 +5,10 @@ using NUnit.Framework;
 
 namespace IntegrationTests
 {
+    [TestFixture()]
     public class Tests
     {
+        [Test]
         public void CreateLoginRemoveUser()
         {
             //Arrage

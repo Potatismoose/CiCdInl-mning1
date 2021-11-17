@@ -20,6 +20,7 @@ namespace CiCdInlämning1.Utilities
             fileStream = File.Create(fullFilePath);
             bf.Serialize(fileStream, user);
             fileStream.Close();
+            WriteLastEmployeeIdToFile(user.Id.ToString());
         }
 
         public static void Deserialize()
